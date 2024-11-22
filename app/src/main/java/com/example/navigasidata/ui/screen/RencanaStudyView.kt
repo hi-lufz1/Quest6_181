@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material3.Icon
@@ -75,7 +76,7 @@ fun RencanaStudyView(
                     .size(50.dp)
             )
             Spacer(modifier = Modifier.padding(16.dp))
-            Column (modifier = Modifier.weight(1f)){
+            Column(modifier = Modifier.weight(1f)) {
                 Text(
                     text = mahasiswa.nama,
                     fontWeight = FontWeight.Bold,
@@ -89,10 +90,42 @@ fun RencanaStudyView(
                     color = Color.White
                 )
             }
-            Box(){
-                Icon(imageVector = Icons.Filled.Notifications,
+            Box() {
+                Icon(
+                    imageVector = Icons.Filled.Notifications,
                     contentDescription = "",
-                    tint = Color.White)
+                    tint = Color.White
+                )
+            }
+        }
+        Box(
+            modifier = Modifier
+                .background(
+                    color = Color.White,
+                    shape = RoundedCornerShape(
+                        topEnd = 15.dp,
+                        topStart = 15.dp
+                    )
+                )
+                .fillMaxSize()
+        ) {
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(16.dp)
+            )
+            {
+                Text(
+                    text = "Pilih Mata Kuliah Peminatan",
+                    fontWeight = FontWeight.Bold
+                )
+                Text(
+                    text = "Silahkan pilih mata kuliah yang anda inginkan",
+                    fontWeight = FontWeight.Light,
+                    fontSize = 12.sp
+                )
+                Spacer(modifier = Modifier.padding(16.dp))
+
             }
         }
     }
