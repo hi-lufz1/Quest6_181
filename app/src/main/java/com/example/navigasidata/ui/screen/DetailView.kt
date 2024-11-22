@@ -14,6 +14,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Notifications
+import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -112,8 +113,11 @@ fun DetailView(
                         data = detailData.second
                     )
                 }
+                Spacer(modifier = Modifier.padding(16.dp))
+                Button(onClick = { onBackClick() }) {
+                    Text("Kembali")
+                }
             }
-
         }
     }
 }
