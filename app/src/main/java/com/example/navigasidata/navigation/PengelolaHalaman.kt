@@ -12,6 +12,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.navigasidata.ui.screen.DetailView
 import com.example.navigasidata.ui.screen.MahasiswaFormView
 import com.example.navigasidata.ui.screen.RencanaStudyView
 import com.example.navigasidata.ui.screen.SplashView
@@ -33,6 +34,7 @@ fun MahasiswaApp(
     navController: NavHostController = rememberNavController(),
 ) {
     val mahasiswaUiState = mahasiswaViewModel.mahasiswaUiState.collectAsState().value
+    val krsUiState = krsViewModel.krsStateUi.collectAsState().value
     NavHost(
         navController = navController,
         startDestination = Halaman.Splash.name,
@@ -61,6 +63,13 @@ fun MahasiswaApp(
                     navController.navigate(Halaman.Detail.name)
                 },
                 onBackButtonClicked = { navController.popBackStack() })
+        }
+        composable(route = Halaman.Detail.name) {
+            DetailView(
+                mahasiswa = mahasiswaUiState,
+                dataKrs = krsUiState,
+                onBackClick = { navController.popBackStack() }
+            )
         }
     }
 
