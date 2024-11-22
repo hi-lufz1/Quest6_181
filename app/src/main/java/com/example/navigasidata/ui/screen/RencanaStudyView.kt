@@ -34,7 +34,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.navigasidata.model.Mahasiswa
 import com.example.navigasidata.R
+import com.example.navigasidata.data.MataKuliah
 import com.example.navigasidata.model.RencanaStudy
+import com.example.navigasidata.ui.widget.DynamicSelectedField
 
 @Composable
 fun RencanaStudyView(
@@ -125,6 +127,14 @@ fun RencanaStudyView(
                     fontSize = 12.sp
                 )
                 Spacer(modifier = Modifier.padding(16.dp))
+                DynamicSelectedField(
+                    selectedValue = chosenDropdown,
+                    options = MataKuliah.options,
+                    label = "Mata Kuliah",
+                    onValueChangeEvent = {
+                        chosenDropdown = it
+                    }
+                )
 
             }
         }
