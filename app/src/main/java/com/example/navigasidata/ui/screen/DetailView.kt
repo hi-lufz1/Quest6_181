@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material3.Icon
@@ -88,5 +89,39 @@ fun DetailView(
                 )
             }
         }
+        Box(
+            modifier = Modifier
+                .background(
+                    color = Color.White,
+                    shape = RoundedCornerShape(
+                        topEnd = 15.dp,
+                        topStart = 15.dp
+                    )
+                )
+                .fillMaxSize()
+        ) {
+            Column(
+                modifier = Modifier
+            ) { }
+
+        }
+    }
+}
+
+
+@Composable
+fun DetailData(
+    judul: String,
+    data: String
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(8.dp)
+    ) {
+
+        Text(text = judul, fontSize = 20.sp, modifier = Modifier.weight(0.9f))
+        Text(text = " : ", fontSize = 20.sp, modifier = Modifier.weight(0.2f))
+        Text(text = data, fontSize = 20.sp, modifier = Modifier.weight(2f))
     }
 }
