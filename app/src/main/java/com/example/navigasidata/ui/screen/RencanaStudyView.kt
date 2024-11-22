@@ -15,6 +15,8 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Notifications
+import androidx.compose.material3.Checkbox
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
@@ -129,7 +131,7 @@ fun RencanaStudyView(
                     fontWeight = FontWeight.Light,
                     fontSize = 12.sp
                 )
-                Spacer(modifier = Modifier.padding(16.dp))
+                Spacer(modifier = Modifier.padding(8.dp))
                 DynamicSelectedField(
                     selectedValue = chosenDropdown,
                     options = MataKuliah.options,
@@ -138,20 +140,37 @@ fun RencanaStudyView(
                         chosenDropdown = it
                     }
                 )
-                Spacer(modifier = Modifier.padding(16.dp))
+                Spacer(modifier = Modifier.padding(8.dp))
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceEvenly
                 ) {
                     RuangKelas.listKelas.forEach { data ->
-                        Row (verticalAlignment = Alignment.CenterVertically){
+                        Row(verticalAlignment = Alignment.CenterVertically) {
                             RadioButton(
                                 selected = pilihanKelas == data,
-                                onClick = {pilihanKelas = data}
+                                onClick = { pilihanKelas = data }
                             )
                             Text(data)
                         }
                     }
+                }
+                Spacer(modifier = Modifier.padding(8.dp))
+                HorizontalDivider()
+                Spacer(modifier = Modifier.padding(8.dp))
+                Text("Klausul Persetujuan Mahasiswa", fontWeight = FontWeight.Bold)
+                Row(
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Checkbox(
+                        checked = checked,
+                        onCheckedChange = { checked = it },
+                        enabled = chosenDropdown.isNotBlank() && pilihanKelas.isNotBlank()
+                    )
+                    Text(
+                        "Saya menyetujui setiap pernyataan yang ada tanpa ada paksaan dari pihak manapun.",
+                        fontWeight = FontWeight.Light, fontSize = 10.sp
+                    )
                 }
 
             }
