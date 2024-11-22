@@ -1,12 +1,13 @@
 package com.example.navigasidata.ui.viewmodel
 
+import androidx.lifecycle.ViewModel
 import com.example.navigasidata.model.RencanaStudy
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 
-class RencanaStudyViewModel {
+class RencanaStudyViewModel : ViewModel() {
     private val _krsState = MutableStateFlow(RencanaStudy())
     val krsStateUi: StateFlow<RencanaStudy> = _krsState.asStateFlow()
 
