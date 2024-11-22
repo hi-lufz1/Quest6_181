@@ -2,6 +2,7 @@ package com.example.navigasidata.ui.screen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -15,6 +16,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material3.Icon
+import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -35,6 +37,7 @@ import androidx.compose.ui.unit.sp
 import com.example.navigasidata.model.Mahasiswa
 import com.example.navigasidata.R
 import com.example.navigasidata.data.MataKuliah
+import com.example.navigasidata.data.RuangKelas
 import com.example.navigasidata.model.RencanaStudy
 import com.example.navigasidata.ui.widget.DynamicSelectedField
 
@@ -135,6 +138,21 @@ fun RencanaStudyView(
                         chosenDropdown = it
                     }
                 )
+                Spacer(modifier = Modifier.padding(16.dp))
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceEvenly
+                ) {
+                    RuangKelas.listKelas.forEach { data ->
+                        Row (verticalAlignment = Alignment.CenterVertically){
+                            RadioButton(
+                                selected = pilihanKelas == data,
+                                onClick = {pilihanKelas = data}
+                            )
+                            Text(data)
+                        }
+                    }
+                }
 
             }
         }
