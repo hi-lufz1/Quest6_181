@@ -102,7 +102,17 @@ fun DetailView(
         ) {
             Column(
                 modifier = Modifier
-            ) { }
+                    .fillMaxSize()
+                    .padding(16.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                listDataKRSMahasiswa.forEach{ detailData ->
+                    DetailData(
+                        judul = detailData.first,
+                        data = detailData.second
+                    )
+                }
+            }
 
         }
     }
